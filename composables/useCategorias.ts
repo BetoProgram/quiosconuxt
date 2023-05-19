@@ -1,6 +1,6 @@
 import { storeToRefs } from 'pinia'
-import { Producto } from "@prisma/client"
 import { Categoria } from "~/models/categoria.model"
+import { Producto } from '~/models/producto.model';
 import { createToast } from 'mosha-vue-toastify';
 import 'mosha-vue-toastify/dist/style.css'
 import { useModalProducto } from  '@/store/modalProducto'
@@ -9,6 +9,7 @@ const categorias = ref<Categoria[]>()
 const categoriaActual = ref<Categoria>()
 const productoSeleccionado = ref<Producto>()
 const pedido = ref<any[]>([])
+const total = ref<number>(0)
 
 export const useCategorias = () => {
 
@@ -20,6 +21,13 @@ export const useCategorias = () => {
     onMounted(async() => {
         await obtenerCategorias()
     })
+
+    watch(pedido, (currentPedido, oldPedido) => {
+        const nuevoTolal = currentPedido.reduce((total, producto) => 
+        (producto?.precio * producto?.cantidad) + total, 0)
+
+        total.value = nuevoTolal
+    },{immediate: true})
 
     /* watch(categorias, (newValue, oldValue) => 
     {
@@ -71,16 +79,39 @@ export const useCategorias = () => {
         pedido.value = pedidoActualizado
     }
 
+    const colocarOrden = async (e:any,nombre:string) => {
+        e.preventDefault();
+        console.log(nombre)
+        console.log(pedido.value)
+        console.log(total.value)
+
+        try{
+            const data = await $fetch('/api/create-orden',{ 
+                method: 'POST', 
+                body : { 
+                    nombre, 
+                    pedido: pedido.value, 
+                    total: total.value,
+                    fecha: Date.now().toString()
+                } 
+            })
+        }catch(error){
+            console.log(error)
+        }
+    }
+
     return {
         categorias,
         categoriaActual,
         productoSeleccionado,
         pedido,
+        total,
         //Metodos
         obtenerCategoriasId,
         obtenerProductoSeleccionado,
         agregarPedido,
         editarCantidades,
-        eliminarProducto
+        eliminarProducto,
+        colocarOrden
     } 
 }
