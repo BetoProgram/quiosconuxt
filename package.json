@@ -21,6 +21,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.4.11",
     "@prisma/client": "^4.14.1",
+    "@vueuse/core": "^10.1.2",
     "mosha-vue-toastify": "^1.0.23",
     "nuxt-headlessui": "^1.1.4",
     "ts-node": "^10.9.1"

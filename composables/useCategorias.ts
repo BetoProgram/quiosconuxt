@@ -95,6 +95,17 @@ export const useCategorias = () => {
                     fecha: Date.now().toString()
                 } 
             })
+
+            categoriaActual.value = categorias.value![0]
+            pedido.value = []
+            total.value = 0
+
+            createToast('Pedido Realizado Correctamente', { type: 'success' })
+
+            setTimeout(() => {
+                router.push('/')
+            }, 3000)
+
         }catch(error){
             console.log(error)
         }
