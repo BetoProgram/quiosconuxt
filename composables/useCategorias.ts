@@ -1,6 +1,6 @@
 import { Categoria } from "~/models/categoria.model"
 import { Producto } from '~/models/producto.model';
-import { createToast } from 'mosha-vue-toastify';
+const { createToast } = require('mosha-vue-toastify');
 import 'mosha-vue-toastify/dist/style.css'
 import { useModalProducto } from  '@/store/modalProducto'
 

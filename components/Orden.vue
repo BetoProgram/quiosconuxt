@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { createToast } from 'mosha-vue-toastify';
+const { createToast } = require('mosha-vue-toastify');
 import 'mosha-vue-toastify/dist/style.css'
 
 const props = defineProps(['orden'])
