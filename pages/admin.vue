@@ -8,7 +8,7 @@ const { data, error, refresh } = await useFetch('/api/get-all-ordenes',{ server:
 
 useIntervalFn(() => {
     refresh()
-}, 100)
+}, 2000)
 
 </script>
 
