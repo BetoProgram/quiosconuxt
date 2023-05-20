@@ -1,7 +1,7 @@
 import { Categoria } from "~/models/categoria.model"
 import { Producto } from '~/models/producto.model';
-const { createToast } = require('mosha-vue-toastify');
-import 'mosha-vue-toastify/dist/style.css'
+import { createToast } from 'mosha-vue-toastify';
+//import 'mosha-vue-toastify/dist/style.css'
 import { useModalProducto } from  '@/store/modalProducto'
 
 const categorias = ref<Categoria[]>()
