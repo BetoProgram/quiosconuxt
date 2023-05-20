@@ -1,4 +1,3 @@
-import { storeToRefs } from 'pinia'
 import { Categoria } from "~/models/categoria.model"
 import { Producto } from '~/models/producto.model';
 import { createToast } from 'mosha-vue-toastify';
