@@ -1,6 +1,6 @@
 import { Categoria } from "~/models/categoria.model"
 import { Producto } from '~/models/producto.model';
-import { createToast } from 'mosha-vue-toastify';
+//import { createToast } from 'mosha-vue-toastify';
 //import 'mosha-vue-toastify/dist/style.css'
 import { useModalProducto } from  '@/store/modalProducto'
 
@@ -58,10 +58,10 @@ export const useCategorias = () => {
             const pedidoActualizado = pedido.value.map((p:any) => p.id === producto.id ? producto : p )
 
             pedido.value = pedidoActualizado
-            createToast('Guardado correctamente', { type: 'success' })
+            //createToast('Guardado correctamente', { type: 'success' })
         }else{
             pedido.value.push(producto)
-            createToast('Agregado al Pedido', { type: 'success' })
+            //createToast('Agregado al Pedido', { type: 'success' })
         }
         closeModalProducto()
     }
@@ -99,7 +99,7 @@ export const useCategorias = () => {
             pedido.value = []
             total.value = 0
 
-            createToast('Pedido Realizado Correctamente', { type: 'success' })
+            //createToast('Pedido Realizado Correctamente', { type: 'success' })
 
             setTimeout(() => {
                 router.push('/')

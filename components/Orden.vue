@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { createToast } from 'mosha-vue-toastify';
+//import { createToast } from 'mosha-vue-toastify';
 //import 'mosha-vue-toastify/dist/style.css'
 
 const props = defineProps(['orden'])
@@ -43,9 +43,9 @@ const completarOrden = async() => {
     try{
 
         await $fetch('/api/post-orden/'+orden?.value.id, { method: 'POST' })
-        createToast('Orden Lista', { type: 'success' })
+        //createToast('Orden Lista', { type: 'success' })
     }catch(error){
-        createToast('Hubo un error', { type: 'danger' })
+        //createToast('Hubo un error', { type: 'danger' })
     }
 
 }
